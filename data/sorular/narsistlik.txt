@@ -1,0 +1,50 @@
+                                                                                NARSİSTLİK 
+
+
+
+1-Başkalarından özel muamele görmeyi beklerim.
+
+2-Başarılarımı sık sık abartırım.
+
+3-Eleştirilere karşı çok hassasımdır.
+
+4-Başkalarının duygularını anlamakta zorlanırım.
+
+5-Kendi ihtiyaçlarımı başkalarınınkinden önce tutarım.
+
+6-Genellikle kendimi diğerlerinden üstün hissederim.
+
+7-İnsanlar benimle ilgilenmezse rahatsız olurum.
+
+8-Hayranlık görmeyi çok önemserim.
+
+9-Başkalarının başarılarını küçümseyebilirim.
+
+10-Empati yapmak benim için zordur.
+
+11-İnsanlar beni kıskanıyor gibi hissederim.
+
+12-Kendimi çekici ve etkileyici bulurum.
+
+13-Başarılarım hakkında sık sık konuşurum.
+
+14-Kuralları genellikle kendim için esnetirim.
+
+15-Başkalarının beni onaylaması benim için çok önemlidir.
+
+16-Sık sık övgü ve takdir beklerim.
+
+17-Başkalarının duygularına önem vermem.
+
+18-Kendi düşüncelerimi ve fikirlerimi üstün görürüm.
+
+19-Sosyal ortamlarda dikkat çekmek isterim.
+
+20-Eleştiri karşısında savunmacı olurum.
+
+
+0 = Hiç Katılmıyorum
+1 = Katılmıyorum
+2 = Kararsızım
+3 = Katılıyorum
+4 = Tamamen Katılıyorum

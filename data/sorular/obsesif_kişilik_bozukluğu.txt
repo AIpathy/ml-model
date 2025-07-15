@@ -1,0 +1,50 @@
+                                                                  OBSESİF KİŞİK BOZUKLUĞU
+
+
+1-Bazı düşünceler kafamdan hiç gitmiyor, sürekli tekrarlıyor.
+
+2-Elimi defalarca yıkama ihtiyacı hissediyorum.
+
+3-Eşyalarımı belirli bir düzene göre yerleştirmek zorundaymışım gibi geliyor.
+
+4-Bazı davranışları tekrarlamadan rahat edemiyorum.
+
+5-Temizlikle ilgili takıntılarım var.
+
+6-Bu takıntılar günlük işlerimi zorlaştırıyor.
+
+7-Belirli sayıların benim için önemi var ve onları tekrar ediyorum.
+
+8-Zihnimde istemediğim düşünceler ortaya çıkıyor ve rahatsız edici.
+
+9-Kontrol etme davranışlarım (kapı kilidi, ocak vb.) çok sık.
+
+10-Bu durumlar yüzünden stres ve kaygı yaşıyorum.
+
+11-Zorlantılarımı(TAKINTI) durdurmakta zorlanıyorum.
+
+12-Bu takıntılarımı başkalarından gizlemeye çalışıyorum.
+
+13-Zamanımın büyük bir kısmı bu düşüncelerle geçiyor.
+
+14-İstemediğim düşünceler beni rahatsız ediyor.
+
+15-Günlük hayatımı etkileyen alışkanlıklarım var.
+
+16-Tekrarlayan düşüncelerim yüzünden konsantre olamıyorum.
+
+17-Belli rutinleri yapmadan dışarı çıkmak istemem.
+
+18-Bu davranışlarımı değiştirmek istiyorum ama başaramıyorum.
+
+19-Zorlantılarım aile ve sosyal ilişkilerimi etkiliyor.
+
+20-Profesyonel yardım almayı düşünüyorum.
+
+
+0 = Hiç Katılmıyorum
+1 = Katılmıyorum
+2 = Kararsızım
+3 = Katılıyorum
+4 = Tamamen Katılıyorum
+

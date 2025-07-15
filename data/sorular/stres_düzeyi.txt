@@ -1,0 +1,45 @@
+                                                                     STRES DÜZEYİ TESTLERİ 
+
+1-İşlerimi veya günlük görevlerimi yetiştirmekte zorlandım.
+
+2-Kendimi sürekli baskı altında hissettim.
+
+3-Uyku kalitemde düşüş yaşadım, rahat uyuyamadım.
+
+4-Sinirli veya gergin hissettim.
+
+5-Karar vermekte zorlandım.
+
+6-Fiziksel olarak yorgun veya bitkin hissettim.
+
+7-Ani öfke patlamaları yaşadım.
+
+8-Gelecek hakkında endişelendim.
+
+9-Kendimi kontrolüm dışında hissettim.
+
+10-Sosyal ilişkilerimde zorluk yaşadım.
+
+11-Sürekli bir şeyleri unuttuğumu fark ettim.
+
+12-Mide rahatsızlıkları veya sindirim problemleri yaşadım.
+
+13-Baş ağrısı veya kas gerginliği hissettim.
+
+14-Kendimi huzursuz veya tedirgin hissettim.
+
+15-Beklenmedik durumlarla baş etmekte zorlandım.
+
+16-Sık sık olumsuz düşüncelere kapıldım.
+
+17-İş ve özel hayat arasında denge kurmakta zorlandım.
+
+18-Duygusal iniş çıkışlar yaşadım.
+
+19-Kendimi enerjisiz ve isteksiz hissettim.
+
+20-Günlük hayatın temposuna ayak uydurmakta zorlandım
+
+
+0 = Hiçbir zaman | 1 = Çok nadiren | 2 = Ara sıra | 3 = Sık sık | 4 = Neredeyse her gün
+

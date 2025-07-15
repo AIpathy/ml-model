@@ -1,0 +1,49 @@
+                                                                         ÖFKE TESTİ
+
+
+1-Küçük şeyler bile beni kolayca sinirlendirir.
+
+2-Öfkelendiğimde kontrolümü kaybetmekten korkarım.
+
+3-Öfkem nedeniyle bazen istemediğim şeyler söylerim.
+
+4-Öfkemi dışa vurmak için bağırma veya kavga etme ihtiyacı hissederim.
+
+5-Sinirlendiğimde kendimi sakinleştirmekte zorlanırım.
+
+6-İnsanların davranışları beni çabuk kızdırır.
+
+7-Öfkem nedeniyle ilişkilerimde sorunlar yaşarım.
+
+8-Öfkemi çoğunlukla içimde tutarım ve patlamam.
+
+9-Stresli durumlarda öfkemi kontrol etmekte zorlanırım.
+
+10-Beni kızdıran şeyleri uzun süre aklımda tutarım.
+
+11-Kendimi öfkeli hissettiğimde fiziksel belirtiler (kalp çarpıntısı, terleme) yaşarım.
+
+12-Öfkemi ifade etmek için fiziksel hareketler yaparım (ellerimi yumruklarım, yere vururum).
+
+13-Öfkemi başkalarına zarar vermeden yönetmeyi öğrenmek istiyorum.
+
+14-Öfkemi kontrol etmek için nefes egzersizleri veya benzeri yöntemler kullanırım.
+
+15-Öfke krizleri sonrası genellikle pişmanlık duyarım.
+
+16-Başkalarının beni haksız yere eleştirmesi beni kolayca öfkelendirir.
+
+17-Öfkemi gizlemeye çalışırım ama bu beni daha da gergin yapar.
+
+18-Öfkem yüzünden iş veya okul performansım etkilenir.
+
+19-Öfkem nedeniyle aile veya arkadaşlarımla tartışmalar yaşarım.
+
+20-Öfke, hayatımda sıkıntı yaratan bir sorun olarak görüyorum.
+
+
+0 = Hiç Katılmıyorum
+1 = Katılmıyorum
+2 = Kararsızım
+3 = Katılıyorum
+4 = Tamamen Katılıyorum

@@ -1,0 +1,50 @@
+                                                            ALKOL BAĞIMLILIĞI
+
+1-Bir içkiyle başlayıp farkında olmadan çok daha fazlasını içtiğim zamanlar olur.”
+
+2-“Alkol almadan rahatlayamıyormuşum gibi hissediyorum.”
+
+3-“Çevremdeki insanlar, içki tüketimime dikkat çekti ya da beni uyardı.”
+
+4-“Sabahları ayılmak için alkol aldığım zamanlar oldu.”
+
+5-“Alkol aldıktan sonra bir geceyi ya da olayları hatırlayamadığım oldu.”
+
+6-“İçki içmediğimde huzursuzluk, sinirlilik veya boşluk hissediyorum.”
+
+7-“Bir süre bırakmayı denedim ama yeniden başladım.”
+
+8-“Alkol yüzünden işlerim, ilişkilerim veya okul hayatım olumsuz etkilendi.”
+
+9-“Kendime zarar verecek kadar fazla içtiğim oldu.”
+
+10-“Alkol aldığım günlerde kendimi kontrol etme yetimi kaybettiğimi hissediyorum.”
+
+11-Sadece eğlenmek için içmeye başlarım ama kendimi durduramam.”
+
+12-“Alkol almadan sosyalleşmekte zorlanıyorum.”
+
+13-“İçki içmediğim günlerde huzursuzluk yaşıyorum.”
+
+14-“Alkol aldıktan sonra pişmanlık hissettiğim zamanlar oluyor.”
+
+15-“Sıkıntı ya da stres yaşadığımda ilk aklıma gelen şey alkol oluyor.”
+
+16-“Alkol yüzünden yaptığım veya söylediğim şeyleri sonradan düzeltmek zorunda kalıyorum.”
+
+17-“Yalnızken de içiyorum.”
+
+18-“İçkiyi azaltmak istesem de bunu başaramıyorum.”
+
+19-“Alkol kullanımımı gizlediğim zamanlar oldu.”
+
+20-“Alkol, hayatımın bir parçası haline geldiğini hissediyorum.”
+
+
+0 = Hiç Katılmıyorum
+1 = Katılmıyorum
+2 = Kararsızım
+3 = Katılıyorum
+4 = Tamamen Katılıyorum
+
+

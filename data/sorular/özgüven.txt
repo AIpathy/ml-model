@@ -1,0 +1,47 @@
+                                                                       ÖZGÜVEN TESTİ
+
+1-Yeni insanlarla tanışmak benim için kolaydır.
+
+2-Zor durumlarla karşılaştığımda kendime güvenirim.
+
+3-Fikirlerimi açıkça ifade etmekte zorlanmam.
+
+4-Başarılarımı hak ettiğime inanırım.
+
+5-Başkalarının benim hakkımda ne düşündüğünü çok fazla önemsemem.
+
+6-Hatalarımı kolayca kabul eder ve onlardan ders çıkarırım.
+
+7-Kendi kararlarımı almaktan çekinmem.
+
+8-Sosyal ortamlarda rahat davranırım.
+
+9-Eleştiri aldığımda kendimi kötü hissetmem.
+
+10-Kendimi olduğum gibi kabul ederim.
+
+11-Başkalarının yanında kendimi özgürce ifade edebilirim.
+
+12-Başarısızlık korkum, yeni şeyler denememe engel olmaz.
+
+13-Kendi yeteneklerime güvenim tamdır.
+
+14-Zorlayıcı durumlarda sakin kalmayı başarırım.
+
+15-Yeni bir işe başlamadan önce kendimi hazır hissederim.
+
+16-Başkalarının onayına ihtiyaç duymadan hareket ederim.
+
+17-Sosyal ortamlarda fikirlerimi savunmakta zorlanmam.
+
+18-Kendi değerimi bilirim.
+
+19-Kendimle barışığım ve olumlu düşüncelerim vardır.
+
+20-Hayatta karşılaştığım engelleri aşabileceğime inanırım.
+
+0 = Hiç Katılmıyorum
+1 = Katılmıyorum
+2 = Kararsızım
+3 = Katılıyorum
+4 = Tamamen Katılıyorum
