@@ -1,10 +1,10 @@
 import google.generativeai as genai
 from google.generativeai import types
 import os
-from dotenv import load_dotenv
 from io import BytesIO
 import requests
 from elevenlabs.client import ElevenLabs
+from dotenv import load_dotenv
 
 # The client gets the API key from GitHub secrets.
 client = genai.Client()
