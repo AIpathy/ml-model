@@ -1,11 +1,11 @@
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from google.generativeai import types
 import os
 from io import BytesIO
 import requests
 from elevenlabs.client import ElevenLabs
 
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
+# The client gets the API key from GitHub secrets.
 client = genai.Client()
 
 def generate_response(test_name, result):
@@ -38,7 +38,7 @@ def generate_response(test_name, result):
 
 def stt_emotion(audio_file):
     elevenlabs = ElevenLabs(
-    api_key=os.getenv("ELEVENLABS_API_KEY"),
+    api_key=os.getenv("ELEVENLABS_API_KEY"),  # GitHub secrets'tan alınır
     )
 
     # Path to your local MP3 file
@@ -56,7 +56,7 @@ def stt_emotion(audio_file):
     )
 
     print(transcription)
-    # The client gets the API key from the environment variable `GEMINI_API_KEY`.
+    # The client gets the API key from GitHub secrets.
     client = genai.Client()
 
     response = client.models.generate_content(
