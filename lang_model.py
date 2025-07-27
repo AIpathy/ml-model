@@ -1,7 +1,6 @@
 from google import genai
 from google.genai import types
 import os
-from dotenv import load_dotenv
 from io import BytesIO
 import requests
 from elevenlabs.client import ElevenLabs
@@ -38,8 +37,6 @@ def generate_response(test_name, result):
 
 
 def stt_emotion(audio_file):
-    load_dotenv()
-
     elevenlabs = ElevenLabs(
     api_key=os.getenv("ELEVENLABS_API_KEY"),
     )
