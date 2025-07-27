@@ -8,6 +8,14 @@ import uvicorn
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"message": "ML Model API is running!"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
 @app.post("/predict_anksiyete/")
 def predict_anksiyete_route(new_point: anksiyete_input):
     prediction = predict_anksiyete(new_point)
