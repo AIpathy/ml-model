@@ -1,0 +1,21 @@
+services:
+  ml-model:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - PORT=8000
+      - GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+      - ELEVENLABS_API_KEY=${{ secrets.ELEVENLABS_API_KEY }}
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    networks:
+      - ml-network
+    restart: unless-stopped
+
+
+networks:
+  ml-network:
+    driver: bridge 
