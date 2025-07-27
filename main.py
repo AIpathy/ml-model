@@ -1,78 +1,53 @@
-import pandas as pd
-import pickle
-
+# main.py
 from fastapi import FastAPI
-from pydantic import BaseModel
+from data_types import anksiyete_input, borderline_input, narsizm_input, sosyal_fobi_input, beck_depresyon_input, alkol_input
+from predictors import predict_anksiyete, predict_borderline, predict_narsizm, predict_sosyal_fobi, predict_beck_depresyon, predict_alkol
+from lang_model import generate_response, stt_emotion
 import uvicorn
+
 
 app = FastAPI()
 
-class anksiyete_input(BaseModel):
-    Yas: int
-    Cinsiyet: str
-    Medeni_Hal: str
-    Is_Durumu: str
-    Egitim: str
-    Gelir_Duzeyi: str
-    Yasam_Yeri: str
-    Psikolojik_Destek: str
-    Calisma_Suresi: int
-    Soru_1: int
-    Soru_2: int
-    Soru_3: int
-    Soru_4: int
-    Soru_5: int
-    Soru_6: int
-    Soru_7: int
-    Soru_8: int
-    Soru_9: int
-    Soru_10: int
-    Soru_11: int
-    Soru_12: int
-    Soru_13: int
-    Soru_14: int
-    Soru_15: int
-    Soru_16: int
-    Soru_17: int
-    Soru_18: int
-    Soru_19: int
-    Soru_20: int
-
 @app.post("/predict_anksiyete/")
-def predict_anksiyete(new_point : anksiyete_input):
-    encoder_path = './encoders/anksiyete_rf_encoder.pkl'
-    model_path = './models/anksiyete_rf_model.pkl'
+def predict_anksiyete_route(new_point: anksiyete_input):
+    prediction = predict_anksiyete(new_point)
+    ai_comment = generate_response("Anksiyete Testi", prediction)
+    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
-    new_point = new_point.model_dump()
-    #print(new_point)
+@app.post("/predict_borderline/")
+def predict_borderline_route(new_point: borderline_input):
+    prediction = predict_borderline(new_point)
+    ai_comment = generate_response("Borderline Testi", prediction)
+    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
-    new_data = pd.DataFrame([new_point])
-    
-    # Load the saved encoder
-    with open(encoder_path, 'rb') as f:
-        encoder = pickle.load(f)
+@app.post("/predict_narsizm/")
+def predict_narsizm_route(new_point: narsizm_input):
+    prediction = predict_narsizm(new_point)
+    ai_comment = generate_response("Narsizm Testi", prediction)
+    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
-    # Load the saved model
-    with open(model_path, 'rb') as f:
-        model = pickle.load(f)
+@app.post("/predict_sosyal_fobi/")
+def predict_sosyal_fobi_route(new_point: sosyal_fobi_input):
+    prediction = predict_sosyal_fobi(new_point)
+    ai_comment = generate_response("Sosyal Fobi Testi", prediction)
+    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
-    # Select only the same categorical columns used during training
-    categorical_cols = new_data.select_dtypes(include=['object', 'category']).columns
+@app.post("/predict_beck_depresyon/")
+def predict_beck_depresyon_route(new_point: beck_depresyon_input):
+    prediction = predict_beck_depresyon(new_point)
+    ai_comment = generate_response("Beck Depresyon Testi", prediction)
+    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
-    # Encode the categorical part
-    encoded_new_cat = encoder.transform(new_data[categorical_cols])
+@app.post("/predict_alkol/")
+def predict_alkol_route(new_point: alkol_input):
+    prediction = predict_alkol(new_point)
+    ai_comment = generate_response("Alkol Testi", prediction)
+    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
-    # Convert to DataFrame
-    encoded_new_cat_df = pd.DataFrame(encoded_new_cat, columns=encoder.get_feature_names_out(categorical_cols), index=new_data.index)
-
-    # Drop original categorical columns and concatenate encoded ones
-    new_data_encoded = pd.concat([encoded_new_cat_df,new_data.drop(columns=categorical_cols)], axis=1)
-
-    prediction = model.predict(new_data_encoded)
-
-    return {'Risk_Grubu' : prediction[0]}
-
+@app.post("/stt_emotion/")
+def stt_emotion_route(audio_file_path: str):
+    transcription = stt_emotion(audio_file_path)
+    return {'Transcription': transcription}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
-
