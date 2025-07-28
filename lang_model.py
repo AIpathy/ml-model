@@ -6,6 +6,12 @@ import requests
 from elevenlabs.client import ElevenLabs
 from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
+
+# Configure the API key
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
 # The client gets the API key from GitHub secrets.
 client = genai.Client()
 
