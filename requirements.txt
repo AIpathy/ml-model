@@ -7,3 +7,4 @@ google-genai
 python-dotenv
 elevenlabs
 requests
+python-multipart
