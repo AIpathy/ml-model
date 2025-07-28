@@ -9,11 +9,11 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Configure the API key
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-
-
-client = genai.Client()
+# Only run this block for Gemini Developer API
+client = genai.Client(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    http_options=types.HttpOptions(api_version='v1alpha')
+)
 
 def generate_response(test_name, result):
     """
