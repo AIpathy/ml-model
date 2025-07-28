@@ -3,7 +3,7 @@ from google.generativeai import types
 import os
 from io import BytesIO
 import requests
-from elevenlabs.client import ElevenLabs
+from elevenlabs import ElevenLabs
 from dotenv import load_dotenv
 
 # Load environment variables
