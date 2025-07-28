@@ -3,7 +3,7 @@ uvicorn
 pandas
 scikit-learn
 pydantic
-google-generativeai
+google-genai
 python-dotenv
 elevenlabs
 requests
