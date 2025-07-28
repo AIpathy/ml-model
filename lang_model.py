@@ -12,7 +12,7 @@ load_dotenv()
 # Configure the API key
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-# The client gets the API key from GitHub secrets.
+
 client = genai.Client()
 
 def generate_response(test_name, result):
@@ -47,7 +47,7 @@ def stt_emotion(audio_file):
     load_dotenv()
 
     elevenlabs = ElevenLabs(
-    api_key=os.getenv("ELEVENLABS_API_KEY"),  # GitHub secrets'tan alınır
+    api_key=os.getenv("ELEVENLABS_API_KEY"),
     )
 
     # Path to your local MP3 file
@@ -65,7 +65,7 @@ def stt_emotion(audio_file):
     )
 
     print(transcription)
-    # The client gets the API key from GitHub secrets.
+    
     client = genai.Client()
 
     response = client.models.generate_content(
