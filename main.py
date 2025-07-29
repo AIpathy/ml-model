@@ -57,17 +57,33 @@ def predict_alkol_route(new_point: alkol_input):
 @app.post("/stt_emotion/")
 async def stt_emotion_route(audio: UploadFile = File(...)):
     # Geçici dosya oluştur
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
+    file_extension = audio.filename.split('.')[-1] if audio.filename and '.' in audio.filename else 'wav'
+    with tempfile.NamedTemporaryFile(delete=False, suffix=f".{file_extension}") as temp_file:
         content = await audio.read()
         temp_file.write(content)
         temp_file_path = temp_file.name
     
     try:
-        transcription = stt_emotion(temp_file_path)
-        return {'Transcription': transcription}
+        # Dosya boyutunu kontrol et
+        if len(content) == 0:
+            return {'Transcription': 'Boş dosya gönderildi'}
+        
+        print(f"Processing file: {audio.filename}, size: {len(content)} bytes")
+        gemini_analysis = stt_emotion(temp_file_path)
+        return {
+            'Transcription': gemini_analysis,  # Gemini analizi döndür
+            'ai_comment': gemini_analysis,     # Frontend için
+            'emotion_analysis': gemini_analysis # Frontend için
+        }
+    except Exception as e:
+        print(f"STT Emotion Error: {e}")
+        return {'Transcription': f'Ses analizi sırasında hata: {str(e)}'}
     finally:
         # Geçici dosyayı temizle
-        os.unlink(temp_file_path)
+        try:
+            os.unlink(temp_file_path)
+        except:
+            pass
 
 @app.post("/chat")
 def chat_route(message: dict):
