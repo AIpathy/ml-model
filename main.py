@@ -2,7 +2,7 @@
 from fastapi import FastAPI, File, UploadFile
 from data_types import anksiyete_input, borderline_input, narsizm_input, sosyal_fobi_input, beck_depresyon_input, alkol_input
 from predictors import predict_anksiyete, predict_borderline, predict_narsizm, predict_sosyal_fobi, predict_beck_depresyon, predict_alkol
-from lang_model import generate_response, stt_emotion
+from lang_model import generate_response, stt_emotion, generate_chat_response
 import uvicorn
 import tempfile
 import os
@@ -58,6 +58,20 @@ def predict_alkol_route(new_point: alkol_input):
 def stt_emotion_route(audio_file_path: str):
     transcription = stt_emotion(audio_file_path)
     return {'Transcription': transcription}
+
+@app.post("/chat")
+def chat_route(message: dict):
+    user_message = message.get('message', '')
+    
+    # Gemini API ile yanıt
+    try:
+        response = generate_chat_response(user_message)
+    except Exception as e:
+        print(f"Chat error: {e}")
+        # Fallback yanıt
+        response = 'Mesajınızı aldım. Size nasıl yardımcı olabilirim? Psikolojik durumunuz hakkında konuşmak ister misiniz?'
+    
+    return {'response': response}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=32793)

@@ -84,3 +84,35 @@ def stt_emotion(audio_file):
         "Give your answer in Turkish."
     )
     return(response.text)
+
+def generate_chat_response(user_message):
+    """
+    Generates a chat response using Google Gemini.
+    
+    Args:
+        user_message (str): The user's message.
+    
+    Returns:
+        str: The generated response text.
+    """
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash", 
+            config=types.GenerateContentConfig(
+                system_instruction="Sen yardımcı bir psikolojik asistanısın. " +
+                "Kullanıcıların psikolojik durumları hakkında konuşmak için sana mesaj gönderiyorlar. " +
+                "Görevlerin: " +
+                "1. Empatik ve destekleyici ol " +
+                "2. Profesyonel psikolojik tavsiye verme, sadece destek ol " +
+                "3. Gerektiğinde bir psikoloğa danışmayı öner " +
+                "4. Türkçe yanıt ver " +
+                "5. Kısa ve öz yanıtlar ver " +
+                "6. Kullanıcının duygusal durumunu anlamaya çalış "
+            ),
+            contents=f"Kullanıcı mesajı: {user_message}\n\nBu mesaja uygun, destekleyici bir yanıt ver."
+        )
+        return response.text
+    except Exception as e:
+        print(f"Gemini API error: {e}")
+        # Fallback yanıt
+        return "Mesajınızı aldım. Size nasıl yardımcı olabilirim? Psikolojik durumunuz hakkında konuşmak ister misiniz?"
