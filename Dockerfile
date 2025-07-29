@@ -25,7 +25,7 @@ RUN groupadd -r mluser && useradd -r -g mluser mluser
 RUN chown -R mluser:mluser /app
 USER mluser
 
-EXPOSE 8000
+EXPOSE 32793
 
 # Use uvicorn with reload for development
-CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"] 
+CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "32793", "--reload"] 

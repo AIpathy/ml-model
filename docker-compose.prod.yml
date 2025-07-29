@@ -6,7 +6,7 @@ services:
     image: elifarslancelik/aipathy-ml-model:latest
     container_name: aipathy-ml-model
     ports:
-      - "8000:8000"
+      - "32793:32793"
     environment:
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
@@ -16,7 +16,7 @@ services:
     networks:
       - aipathy-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:32793/health"]
       interval: 30s
       timeout: 10s
       retries: 3
