@@ -55,9 +55,19 @@ def predict_alkol_route(new_point: alkol_input):
     return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
 @app.post("/stt_emotion/")
-def stt_emotion_route(audio_file_path: str):
-    transcription = stt_emotion(audio_file_path)
-    return {'Transcription': transcription}
+async def stt_emotion_route(audio: UploadFile = File(...)):
+    # Geçici dosya oluştur
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
+        content = await audio.read()
+        temp_file.write(content)
+        temp_file_path = temp_file.name
+    
+    try:
+        transcription = stt_emotion(temp_file_path)
+        return {'Transcription': transcription}
+    finally:
+        # Geçici dosyayı temizle
+        os.unlink(temp_file_path)
 
 @app.post("/chat")
 def chat_route(message: dict):
