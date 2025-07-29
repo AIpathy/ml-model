@@ -22,9 +22,11 @@ services:
       retries: 3
     volumes:
       - ml_logs:/app/logs
+      - uploads_volume:/app/uploads  # Backend ile paylaşılan uploads volume
 
 volumes:
   ml_logs:
+  uploads_volume:  # Backend ile paylaşılan volume
 
 networks:
   aipathy-network:
