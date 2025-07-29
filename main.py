@@ -1,9 +1,11 @@
 # main.py
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from data_types import anksiyete_input, borderline_input, narsizm_input, sosyal_fobi_input, beck_depresyon_input, alkol_input
 from predictors import predict_anksiyete, predict_borderline, predict_narsizm, predict_sosyal_fobi, predict_beck_depresyon, predict_alkol
 from lang_model import generate_response, stt_emotion
 import uvicorn
+import tempfile
+import os
 
 
 app = FastAPI()
@@ -53,9 +55,21 @@ def predict_alkol_route(new_point: alkol_input):
     return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
 
 @app.post("/stt_emotion/")
-def stt_emotion_route(audio_file_path: str):
-    transcription = stt_emotion(audio_file_path)
-    return {'Transcription': transcription}
+async def stt_emotion_route(audio_file: UploadFile = File(...)):
+    # Geçici dosya oluştur
+    with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(audio_file.filename)[1]) as temp_file:
+        # Upload edilen dosyayı geçici dosyaya yaz
+        content = await audio_file.read()
+        temp_file.write(content)
+        temp_file_path = temp_file.name
+    
+    try:
+        transcription = stt_emotion(temp_file_path)
+        return {'Transcription': transcription}
+    finally:
+        # Geçici dosyayı temizle
+        if os.path.exists(temp_file_path):
+            os.unlink(temp_file_path)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
