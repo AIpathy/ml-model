@@ -69,11 +69,14 @@ async def stt_emotion_route(audio: UploadFile = File(...)):
             return {'Transcription': 'Boş dosya gönderildi'}
         
         print(f"Processing file: {audio.filename}, size: {len(content)} bytes")
-        gemini_analysis = stt_emotion(temp_file_path)
+        
+        # ElevenLabs transcription ve Gemini analizi al
+        transcription, gemini_analysis = stt_emotion(temp_file_path)
+        
         return {
-            'Transcription': gemini_analysis,  # Gemini analizi döndür
-            'ai_comment': gemini_analysis,     # Frontend için
-            'emotion_analysis': gemini_analysis # Frontend için
+            'Transcription': transcription,        # ElevenLabs transcription
+            'ai_comment': gemini_analysis,        # Gemini analizi
+            'emotion_analysis': gemini_analysis   # Gemini analizi
         }
     except Exception as e:
         print(f"STT Emotion Error: {e}")

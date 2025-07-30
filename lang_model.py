@@ -66,6 +66,9 @@ def stt_emotion(audio_file):
 
     print(transcription)
     
+    # ElevenLabs'den gelen transcription'ı al
+    transcription_text = transcription.text
+    
     client = genai.Client()
 
     response = client.models.generate_content(
@@ -76,14 +79,16 @@ def stt_emotion(audio_file):
             "Your task is to evaluate the mood of the person talking and support them if they need" +
             "Give your answers in Turkish. "
         ),
-        contents=f"Here is the transcription of the audio file: {transcription.text}" +
+        contents=f"Here is the transcription of the audio file: {transcription_text}" +
         "Please evaluate the mood of the person talking in the audio file. Do not comment about this" +  
         "And support them if they are in a bad mood. " +
         "If they are in a good mood, you can just say that they are in a good mood. " +
         "If they are in a bad mood, you can suggest them to talk to a psychologist. " +
         "Give your answer in Turkish."
     )
-    return(response.text)
+    
+    # Hem transcription'ı hem de Gemini analizini döndür
+    return transcription_text, response.text
 
 def generate_chat_response(user_message):
     """
