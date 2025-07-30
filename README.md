@@ -1,194 +1,140 @@
-<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
-  <h1># AIpathy ML-Model</h1>
-  <p>AIpathy projesinin Machine Learning ve AI servislerini sağlayan Python tabanlı microservice'idir.</p>
-  <p>Bu servis, psikolojik test analizleri, ses analizi ve AI destekli yorumlar sunar.</p>
-</div>
+# AIpathy ML-Model
+
+AIpathy projesinin Machine Learning ve AI servislerini sağlayan Python tabanlı microservice'idir.
+
+Bu servis, psikolojik test analizleri, ses analizi ve AI destekli yorumlar sunar.
 
 ---
 
-<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
-  <h2>🛠️ Kullanılan Teknolojiler ve Araçlar</h2>
+## 🛠️ Kullanılan Teknolojiler ve Araçlar
 
-  <h3><strong>Diller:</strong></h3>
-  <ul>
-    <li><strong>Python</strong> - Ana programlama dili</li>
-  </ul>
+### **Diller:**
+- **Python** - Ana programlama dili
 
-  <h3><strong>Web Framework:</strong></h3>
-  <ul>
-    <li><strong>FastAPI</strong></li>
-    <li><strong>Uvicorn</strong> - ASGI server</li>
-  </ul>
+### **Web Framework:**
+- **FastAPI**
+- **Uvicorn** - ASGI server
 
-  <h3><strong>Machine Learning ve Data Science:</strong></h3>
-  <ul>
-    <li><strong>scikit-learn</strong> - Machine learning library</li>
-    <li><strong>pandas</strong> - Data manipulation ve analiz</li>
-    <li><strong>Pydantic</strong> - Data validation ve serialization</li>
-  </ul>
+### **Machine Learning ve Data Science:**
+- **scikit-learn** - Machine learning library
+- **pandas** - Data manipulation ve analiz
+- **Pydantic** - Data validation ve serialization
 
-  <h3><strong>AI ve NLP:</strong></h3>
-  <ul>
-    <li><strong>google-genai</strong> - Google Gemini AI integration & "gemini-2.5-flash"</li>
-    <li><strong>ElevenLabs</strong> - Speech-to-text & "scribe_v1"</li>
-  </ul>
+### **AI ve NLP:**
+- **google-genai** - Google Gemini AI integration & "gemini-2.5-flash"
+- **ElevenLabs** - Speech-to-text & "scribe_v1"
 
-  <h3><strong>HTTP ve API:</strong></h3>
-  <ul>
-    <li><strong>requests</strong> - HTTP</li>
-    <li><strong>python-multipart</strong> - File upload handling</li>
-  </ul>
+### **HTTP ve API:**
+- **requests** - HTTP
+- **python-multipart** - File upload handling
 
-  <h3><strong>Database:</strong></h3>
-  <ul>
-    <li><strong>MySQL</strong></li>
-  </ul>
+### **Database:**
+- **MySQL**
 
-  <h3><strong>Development ve Environment:</strong></h3>
-  <ul>
-    <li><strong>python-dotenv</strong> - Environment variables</li>
-  </ul>
+### **Development ve Environment:**
+- **python-dotenv** - Environment variables
 
-  <h3><strong>Deployment/Containerization:</strong></h3>
-  <ul>
-    <li><strong>Docker</strong> - Containerization</li>
-    <li><strong>Docker Compose</strong> - Multi-container orchestration</li>
-  </ul>
+### **Deployment/Containerization:**
+- **Docker** - Containerization
+- **Docker Compose** - Multi-container orchestration
 
-  <h3><strong>CI/CD:</strong></h3>
-  <ul>
-    <li><strong>Github Actions</strong></li>
-    <li><strong>Deploy to Server</strong></li>
-  </ul>
+### **CI/CD:**
+- **Github Actions**
+- **Deploy to Server**
 
-  <h3><strong>Domain/Hosting/Server</strong></h3>
-  <ul>
-    <li><strong>ML Service Domain: https://ml.aipathy.xyz</strong></li>
-    <li><strong>Main Domain: aipathy.xyz</strong></li>
-    <li><strong>Provider: Sercan Arga (Teşekkürler)</strong></li>
-  </ul>
+### **Domain/Hosting/Server**
+- **ML Service Domain: https://ml.aipathy.xyz**
+- **Main Domain: aipathy.xyz**
+- **Provider: Sercan Arga (Teşekkürler)**
 
-  <h3><strong>Control Panel:</strong></h3>
-  <ul>
-    <li><strong>Plesk</strong> - Web hosting kontrol paneli</li>
-  </ul>
-</div>
+### **Control Panel:**
+- **Plesk** - Web hosting kontrol paneli
 
 ---
 
-<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
-  <h2>Proje Mimarisi ve Kod Yapısı</h2>
+## Proje Mimarisi ve Kod Yapısı
 
-  <h3><strong>Microservice Architecture:</strong></h3>
-  <ul>
-    <li><strong>FastAPI</strong></li>
-    <li><strong>RESTful API</strong> - Standart HTTP endpoint'leri</li>
-    <li><strong>Async/Await</strong> - Asynchronous request handling</li>
-    <li><strong>Pydantic Models</strong> - Request/response validation</li>
-  </ul>
+### **Microservice Architecture:**
+- **FastAPI**
+- **RESTful API** - Standart HTTP endpoint'leri
+- **Async/Await** - Asynchronous request handling
+- **Pydantic Models** - Request/response validation
 
-  <h3><strong>API Endpoints:</strong></h3>
-  <ul>
-    <li><strong>GET /</strong> - Health check</li>
-    <li><strong>GET /health</strong> - Service status</li>
-    <li><strong>POST /predict_anksiyete/</strong> - Anksiyete testi analizi</li>
-    <li><strong>POST /predict_borderline/</strong> - Borderline testi analizi</li>
-    <li><strong>POST /predict_narsizm/</strong> - Narsizm testi analizi</li>
-    <li><strong>POST /predict_sosyal_fobi/</strong> - Sosyal fobi testi analizi</li>
-    <li><strong>POST /predict_beck_depresyon/</strong> - Beck depresyon testi analizi</li>
-    <li><strong>POST /predict_alkol/</strong> - Alkol testi analizi</li>
-    <li><strong>POST /stt_emotion/</strong> - Ses analizi ve duygu tespiti</li>
-    <li><strong>POST /chat</strong> - AI destekli sohbet</li>
-  </ul>
+### **API Endpoints:**
+- **GET /** - Health check
+- **GET /health** - Service status
+- **POST /predict_anksiyete/** - Anksiyete testi analizi
+- **POST /predict_borderline/** - Borderline testi analizi
+- **POST /predict_narsizm/** - Narsizm testi analizi
+- **POST /predict_sosyal_fobi/** - Sosyal fobi testi analizi
+- **POST /predict_beck_depresyon/** - Beck depresyon testi analizi
+- **POST /predict_alkol/** - Alkol testi analizi
+- **POST /stt_emotion/** - Ses analizi ve duygu tespiti
+- **POST /chat** - AI destekli sohbet
 
-  <h3><strong>ML Model Yapısı:</strong></h3>
-  <ul>
-    <li><strong>Random Forest Classifiers</strong> - Ana ML algoritması</li>
-    <li><strong>Label Encoders</strong> - Kategorik veri encoding</li>
-    <li><strong>Feature Engineering</strong> - Veri ön işleme</li>
-    <li><strong>Model Serialization</strong> - Pickle formatında model saklama</li>
-  </ul>
+### **ML Model Yapısı:**
+- **Random Forest Classifiers** - Ana ML algoritması
+- **Label Encoders** - Kategorik veri encoding
+- **Feature Engineering** - Veri ön işleme
+- **Model Serialization** - Pickle formatında model saklama
 
-  <h3><strong>AI Entegrasyonu:</strong></h3>
-  <ul>
-    <li><strong>Google Gemini AI</strong> - Metin analizi ve yorumlar</li>
-    <li><strong>ElevenLabs</strong> - Speech-to-text</li>
-    <li><strong>Emotion Analysis</strong> - Ses dosyalarından duygu analizi</li>
-    <li><strong>Natural Language Processing</strong> - Metin işleme</li>
-  </ul>
+### **AI Entegrasyonu:**
+- **Google Gemini AI** - Metin analizi ve yorumlar
+- **ElevenLabs** - Speech-to-text
+- **Emotion Analysis** - Ses dosyalarından duygu analizi
+- **Natural Language Processing** - Metin işleme
 
-  <h3><strong>Data Validation:</strong></h3>
-  <ul>
-    <li><strong>Pydantic Models</strong> - Request/response validation</li>
-    <li><strong>Type Hints</strong> - Python type checking</li>
-    <li><strong>Input Validation</strong> - Veri doğrulama</li>
-    <li><strong>Error Handling</strong> - Hata yönetimi</li>
-  </ul>
+### **Data Validation:**
+- **Pydantic Models** - Request/response validation
+- **Type Hints** - Python type checking
+- **Input Validation** - Veri doğrulama
+- **Error Handling** - Hata yönetimi
 
-  <h3><strong>Performance Optimizations:</strong></h3>
-  <ul>
-    <li><strong>Async/Await</strong> - Asynchronous request handling</li>
-    <li><strong>Model Caching</strong> - Pre-loaded ML models</li>
-    <li><strong>Memory Management</strong> - Efficient resource usage</li>
-    <li><strong>Docker Optimization</strong> - Container performance</li>
-  </ul>
+### **Performance Optimizations:**
+- **Async/Await** - Asynchronous request handling
+- **Model Caching** - Pre-loaded ML models
+- **Memory Management** - Efficient resource usage
+- **Docker Optimization** - Container performance
 
-  <h3><strong>Security Features:</strong></h3>
-  <ul>
-    <li><strong>Input Validation</strong> - Request data validation</li>
-    <li><strong>File Upload Security</strong> - Secure file handling</li>
-    <li><strong>Error Handling</strong> - Secure error responses</li>
-    <li><strong>Environment Variables</strong> - Secure configuration</li>
-  </ul>
-</div>
+### **Security Features:**
+- **Input Validation** - Request data validation
+- **File Upload Security** - Secure file handling
+- **Error Handling** - Secure error responses
+- **Environment Variables** - Secure configuration
 
 ---
 
-<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
-  <h2>ML Model Detayları</h2>
+## ML Model Detayları
 
-  <h3><strong>Desteklenen Testler:</strong></h3>
-  <ol>
-    <li><strong>Beck Anksiyete Testi</strong> - 20 soru, 0-3 puanlama</li>
-    <li><strong>Borderline Kişilik Testi</strong> - 53 soru, 0-1 puanlama</li>
-    <li><strong>Narsizm Testi</strong> - 25 soru, 0-4 puanlama</li>
-    <li><strong>Sosyal Fobi Testi</strong> - 45 soru, 0-4 puanlama</li>
-    <li><strong>Beck Depresyon Testi</strong> - 21 soru, 0-3 puanlama</li>
-    <li><strong>Alkol Testi</strong> - 34 soru, 0-3 puanlama</li>
-  </ol>
+### **Desteklenen Testler:**
+1. **Beck Anksiyete Testi** - 20 soru, 0-3 puanlama
+2. **Borderline Kişilik Testi** - 53 soru, 0-1 puanlama
+3. **Narsizm Testi** - 25 soru, 0-4 puanlama
+4. **Sosyal Fobi Testi** - 45 soru, 0-4 puanlama
+5. **Beck Depresyon Testi** - 21 soru, 0-3 puanlama
+6. **Alkol Testi** - 34 soru, 0-3 puanlama
 
-  <h3><strong>Risk Grupları:</strong></h3>
-  <ul>
-    <li><strong>Düşük Risk</strong> - Normal seviye</li>
-    <li><strong>Orta Risk</strong> - Dikkat edilmeli</li>
-    <li><strong>Yüksek Risk</strong> - Profesyonel destek gerekli</li>
-  </ul>
+### **Risk Grupları:**
+- **Düşük Risk** - Normal seviye
+- **Orta Risk** - Dikkat edilmeli
+- **Yüksek Risk** - Profesyonel destek gerekli
 
-  <h3><strong>AI Özellikleri:</strong></h3>
-  <ul>
-    <li><strong>Ses Analizi</strong> - Konuşma tonundan duygu tespiti</li>
-    <li><strong>Chatbot</strong> - AI destekli sohbet sistemi</li>
-    <li><strong>Personalized Responses</strong> - Kişiselleştirilmiş yanıtlar</li>
-  </ul>
-</div>
+### **AI Özellikleri:**
+- **Ses Analizi** - Konuşma tonundan duygu tespiti
+- **Chatbot** - AI destekli sohbet sistemi
+- **Personalized Responses** - Kişiselleştirilmiş yanıtlar
 
 ---
 
-<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
-  <h2>Gelecek Geliştirmeler</h2>
+## Gelecek Geliştirmeler
 
-  <h3><strong>Planlanan Özellikler:</strong></h3>
-  <ul>
-    <li><strong>Text-to-Speech for AI</strong> - AI ile realtime sesli sohbet</li>
-    <li><strong>Test Sonuçlarına Göre AI Sohbeti</strong> - Kullanıcıların çözdüğü testlere göre bağlam ve analiz</li>
-    <li><strong>Multi-language Support</strong> - Çoklu dil desteği</li>
-    <li><strong>Model Retraining</strong> - Otomatik model güncelleme</li>
-    <li><strong>Advanced Analytics</strong> - Gelişmiş analitik raporlar</li>
-  </ul>
-</div>
+### **Planlanan Özellikler:**
+- **Text-to-Speech for AI** - AI ile realtime sesli sohbet
+- **Test Sonuçlarına Göre AI Sohbeti** - Kullanıcıların çözdüğü testlere göre bağlam ve analiz
+- **Multi-language Support** - Çoklu dil desteği
+- **Model Retraining** - Otomatik model güncelleme
+- **Advanced Analytics** - Gelişmiş analitik raporlar
 
 ---
 
-<div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
-  <p><strong>Not</strong>: Bu servis, AIpathy projesinin AI/ML ihtiyaçlarını karşılamak üzere tasarlanmıştır.</p>
-</div>
+> **Not**: Bu servis, AIpathy projesinin AI/ML ihtiyaçlarını karşılamak üzere tasarlanmıştır.
