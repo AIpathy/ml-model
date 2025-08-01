@@ -1,4 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, File, UploadFile
+import os 
+import tempfile
+from lang_model import generate_chat_response
 
 from data_types import (
     anksiyete_input, borderline_input, narsizm_input, sosyal_fobi_input,
@@ -15,6 +18,14 @@ from predictors import (
 from lang_model import generate_response, stt_emotion
 
 router = APIRouter()
+
+@router.get("/")
+def read_root():
+    return {"message": "ML Model API is running!"}
+
+@router.get("/health")
+def health_check():
+    return {"status": "healthy"}
 
 @router.post("/predict_anksiyete/")
 def predict_anksiyete_route(new_point: anksiyete_input):
@@ -100,7 +111,51 @@ def predict_okb_route(new_point: okb_input):
     ai_comment = generate_response("OKB Testi", prediction)
     return {'Risk Grubu': prediction, 'AI_Yorum': ai_comment}
 
+
 @router.post("/stt_emotion/")
-def stt_emotion_route(audio_file_path: str):
-    transcription = stt_emotion(audio_file_path)
-    return {'Transcription': transcription}
+async def stt_emotion_route(audio: UploadFile = File(...)):
+    # Geçici dosya oluştur
+    file_extension = audio.filename.split('.')[-1] if audio.filename and '.' in audio.filename else 'wav'
+    with tempfile.NamedTemporaryFile(delete=False, suffix=f".{file_extension}") as temp_file:
+        content = await audio.read()
+        temp_file.write(content)
+        temp_file_path = temp_file.name
+    
+    try:
+        # Dosya boyutunu kontrol et
+        if len(content) == 0:
+            return {'Transcription': 'Boş dosya gönderildi'}
+        
+        print(f"Processing file: {audio.filename}, size: {len(content)} bytes")
+        
+        # ElevenLabs transcription ve Gemini analizi al
+        transcription, gemini_analysis = stt_emotion(temp_file_path)
+        
+        return {
+            'Transcription': transcription,        # ElevenLabs transcription
+            'ai_comment': gemini_analysis,        # Gemini analizi
+            'emotion_analysis': gemini_analysis   # Gemini analizi
+        }
+    except Exception as e:
+        print(f"STT Emotion Error: {e}")
+        return {'Transcription': f'Ses analizi sırasında hata: {str(e)}'}
+    finally:
+        # Geçici dosyayı temizle
+        try:
+            os.unlink(temp_file_path)
+        except:
+            pass
+
+@router.post("/chat")
+def chat_route(message: dict):
+    user_message = message.get('message', '')
+    
+    # Gemini API ile yanıt
+    try:
+        response = generate_chat_response(user_message)
+    except Exception as e:
+        print(f"Chat error: {e}")
+        # Fallback yanıt
+        response = 'Mesajınızı aldım. Size nasıl yardımcı olabilirim? Psikolojik durumunuz hakkında konuşmak ister misiniz?'
+    
+    return {'response': response}
