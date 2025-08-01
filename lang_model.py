@@ -1,13 +1,19 @@
 from google import genai
 from google.genai import types
 import os
-from dotenv import load_dotenv
 from io import BytesIO
 import requests
-from elevenlabs.client import ElevenLabs
+from elevenlabs import ElevenLabs
+from dotenv import load_dotenv
 
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
-client = genai.Client()
+# Load environment variables
+load_dotenv()
+
+# Only run this block for Gemini Developer API
+client = genai.Client(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    http_options=types.HttpOptions(api_version='v1alpha')
+)
 
 def generate_response(test_name, result):
     """
@@ -59,7 +65,10 @@ def stt_emotion(audio_file):
     )
 
     print(transcription)
-    # The client gets the API key from the environment variable `GEMINI_API_KEY`.
+    
+    # ElevenLabs'den gelen transcription'ı al
+    transcription_text = transcription.text
+    
     client = genai.Client()
 
     response = client.models.generate_content(
@@ -70,11 +79,45 @@ def stt_emotion(audio_file):
             "Your task is to evaluate the mood of the person talking and support them if they need" +
             "Give your answers in Turkish. "
         ),
-        contents=f"Here is the transcription of the audio file: {transcription.text}" +
+        contents=f"Here is the transcription of the audio file: {transcription_text}" +
         "Please evaluate the mood of the person talking in the audio file. Do not comment about this" +  
         "And support them if they are in a bad mood. " +
         "If they are in a good mood, you can just say that they are in a good mood. " +
         "If they are in a bad mood, you can suggest them to talk to a psychologist. " +
         "Give your answer in Turkish."
     )
-    return(response.text)
+    
+    # Hem transcription'ı hem de Gemini analizini döndür
+    return transcription_text, response.text
+
+def generate_chat_response(user_message):
+    """
+    Generates a chat response using Google Gemini.
+    
+    Args:
+        user_message (str): The user's message.
+    
+    Returns:
+        str: The generated response text.
+    """
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash", 
+            config=types.GenerateContentConfig(
+                system_instruction="Sen yardımcı bir psikolojik asistanısın. " +
+                "Kullanıcıların psikolojik durumları hakkında konuşmak için sana mesaj gönderiyorlar. " +
+                "Görevlerin: " +
+                "1. Empatik ve destekleyici ol " +
+                "2. Profesyonel psikolojik tavsiye verme, sadece destek ol " +
+                "3. Gerektiğinde bir psikoloğa danışmayı öner " +
+                "4. Türkçe yanıt ver " +
+                "5. Kısa ve öz yanıtlar ver " +
+                "6. Kullanıcının duygusal durumunu anlamaya çalış "
+            ),
+            contents=f"Kullanıcı mesajı: {user_message}\n\nBu mesaja uygun, destekleyici bir yanıt ver."
+        )
+        return response.text
+    except Exception as e:
+        print(f"Gemini API error: {e}")
+        # Fallback yanıt
+        return "Mesajınızı aldım. Size nasıl yardımcı olabilirim? Psikolojik durumunuz hakkında konuşmak ister misiniz?"

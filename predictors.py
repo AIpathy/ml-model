@@ -3,8 +3,8 @@ import pandas as pd
 import pickle
 
 def predict_anksiyete(new_point):
-    encoder_path = './encoders/anksiyete_rf_encoder.pkl'
-    model_path = './models/anksiyete_rf_model.pkl'
+    encoder_path = '/app/encoders/anksiyete_rf_encoder.pkl'
+    model_path = '/app/models/anksiyete_rf_model.pkl'
 
     new_point = new_point.model_dump()
     soru_list = new_point.pop('sorular', None)
@@ -41,8 +41,8 @@ def predict_anksiyete(new_point):
     return prediction[0]
 
 def predict_borderline(new_point):
-    encoder_path = './encoders/borderline_rf_encoder.pkl'
-    model_path = './models/borderline_rf_model.pkl'
+    encoder_path = '/app/encoders/borderline_rf_encoder.pkl'
+    model_path = '/app/models/borderline_rf_model.pkl'
 
     new_point = new_point.model_dump()
     soru_list = new_point.pop('sorular', None)
@@ -79,8 +79,8 @@ def predict_borderline(new_point):
     return prediction[0]
 
 def predict_narsizm(new_point):
-    encoder_path = './encoders/narsizm_rf_encoder.pkl'
-    model_path = './models/narsizm_rf_model.pkl'
+    encoder_path = '/app/encoders/narsizm_rf_encoder.pkl'
+    model_path = '/app/models/narsizm_rf_model.pkl'
 
     new_point = new_point.model_dump()
     soru_list = new_point.pop('sorular', None)
@@ -117,8 +117,8 @@ def predict_narsizm(new_point):
     return prediction[0]
 
 def predict_sosyal_fobi(new_point):
-    encoder_path = './encoders/sosyal_fobi_rf_encoder.pkl'
-    model_path = './models/sosyal_fobi_rf_model.pkl'
+    encoder_path = '/app/encoders/sosyal_fobi_rf_encoder.pkl'
+    model_path = '/app/models/sosyal_fobi_rf_model.pkl'
 
     new_point = new_point.model_dump()
     soru_list = new_point.pop('sorular', None)
@@ -155,8 +155,8 @@ def predict_sosyal_fobi(new_point):
     return prediction[0]
 
 def predict_alkol(new_point):
-    encoder_path = './encoders/alkol_testi_rf_encoder.pkl'
-    model_path = './models/alkol_testi_rf_model.pkl'
+    encoder_path = '/app/encoders/alkol_testi_rf_encoder.pkl'
+    model_path = '/app/models/alkol_testi_rf_model.pkl'
 
     new_point = new_point.model_dump()
     soru_list = new_point.pop('sorular', None)
@@ -193,8 +193,8 @@ def predict_alkol(new_point):
     return prediction[0]
 
 def predict_beck_depresyon(new_point):
-    encoder_path = './encoders/beck_depresyon_rf_encoder.pkl'
-    model_path = './models/beck_depresyon_rf_model.pkl'
+    encoder_path = '/app/encoders/beck_depresyon_rf_encoder.pkl'
+    model_path = '/app/models/beck_depresyon_rf_model.pkl'
 
     new_point = new_point.model_dump()
     soru_list = new_point.pop('sorular', None)
