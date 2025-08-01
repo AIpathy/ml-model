@@ -1,53 +1,9 @@
-# main.py
 from fastapi import FastAPI
-from data_types import anksiyete_input, borderline_input, narsizm_input, sosyal_fobi_input, beck_depresyon_input, alkol_input
-from predictors import predict_anksiyete, predict_borderline, predict_narsizm, predict_sosyal_fobi, predict_beck_depresyon, predict_alkol
-from lang_model import generate_response, stt_emotion
+from routes import router
 import uvicorn
 
-
 app = FastAPI()
-
-@app.post("/predict_anksiyete/")
-def predict_anksiyete_route(new_point: anksiyete_input):
-    prediction = predict_anksiyete(new_point)
-    ai_comment = generate_response("Anksiyete Testi", prediction)
-    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
-
-@app.post("/predict_borderline/")
-def predict_borderline_route(new_point: borderline_input):
-    prediction = predict_borderline(new_point)
-    ai_comment = generate_response("Borderline Testi", prediction)
-    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
-
-@app.post("/predict_narsizm/")
-def predict_narsizm_route(new_point: narsizm_input):
-    prediction = predict_narsizm(new_point)
-    ai_comment = generate_response("Narsizm Testi", prediction)
-    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
-
-@app.post("/predict_sosyal_fobi/")
-def predict_sosyal_fobi_route(new_point: sosyal_fobi_input):
-    prediction = predict_sosyal_fobi(new_point)
-    ai_comment = generate_response("Sosyal Fobi Testi", prediction)
-    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
-
-@app.post("/predict_beck_depresyon/")
-def predict_beck_depresyon_route(new_point: beck_depresyon_input):
-    prediction = predict_beck_depresyon(new_point)
-    ai_comment = generate_response("Beck Depresyon Testi", prediction)
-    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
-
-@app.post("/predict_alkol/")
-def predict_alkol_route(new_point: alkol_input):
-    prediction = predict_alkol(new_point)
-    ai_comment = generate_response("Alkol Testi", prediction)
-    return {'Risk_Grubu': prediction, 'AI_Yorum': ai_comment}
-
-@app.post("/stt_emotion/")
-def stt_emotion_route(audio_file_path: str):
-    transcription = stt_emotion(audio_file_path)
-    return {'Transcription': transcription}
+app.include_router(router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
